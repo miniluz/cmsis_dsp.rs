@@ -466,7 +466,12 @@ pub fn negate_in_place_q7(values: &mut [I1F7]) {
 pub fn shift_q15(src: &[I1F15], shift_bits: i8, dst: &mut [I1F15]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
-        cmsis_dsp_sys::arm_shift_q15(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+        cmsis_dsp_sys::arm_shift_q15(
+            src.as_ptr() as *const _,
+            shift_bits,
+            dst.as_mut_ptr() as *mut _,
+            length,
+        );
     }
 }
 
@@ -481,7 +486,12 @@ pub fn shift_q15(src: &[I1F15], shift_bits: i8, dst: &mut [I1F15]) {
 pub fn shift_q31(src: &[I1F31], shift_bits: i8, dst: &mut [I1F31]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
-        cmsis_dsp_sys::arm_shift_q31(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+        cmsis_dsp_sys::arm_shift_q31(
+            src.as_ptr() as *const _,
+            shift_bits,
+            dst.as_mut_ptr() as *mut _,
+            length,
+        );
     }
 }
 
@@ -496,7 +506,12 @@ pub fn shift_q31(src: &[I1F31], shift_bits: i8, dst: &mut [I1F31]) {
 pub fn shift_q7(src: &[I1F7], shift_bits: i8, dst: &mut [I1F7]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
-        cmsis_dsp_sys::arm_shift_q7(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+        cmsis_dsp_sys::arm_shift_q7(
+            src.as_ptr() as *const _,
+            shift_bits,
+            dst.as_mut_ptr() as *mut _,
+            length,
+        );
     }
 }
 

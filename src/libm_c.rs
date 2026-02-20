@@ -121,4 +121,3 @@ forward! {
     fma(f64, f64, f64) -> f64,
     fmaf(f32, f32, f32) -> f32,
 }
-

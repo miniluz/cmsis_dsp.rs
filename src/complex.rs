@@ -14,6 +14,10 @@ use crate::check_length;
 pub fn complex_magnitude_f32(source: &[Complex32], destination: &mut [f32]) {
     let length = check_length((source.len(), destination.len()));
     unsafe {
-        cmsis_dsp_sys::arm_cmplx_mag_f32(source.as_ptr() as *const f32, destination.as_mut_ptr(), length);
+        cmsis_dsp_sys::arm_cmplx_mag_f32(
+            source.as_ptr() as *const f32,
+            destination.as_mut_ptr(),
+            length,
+        );
     }
 }

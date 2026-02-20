@@ -2,7 +2,6 @@
 //!
 //! Micromath implements fewer functions than libm, and has no double-precision functions.
 
-
 macro_rules! forward {
     // One argument, argument and result are both f32
     { $( $c_name:ident -> $micromath_name:ident ,)+ } => {

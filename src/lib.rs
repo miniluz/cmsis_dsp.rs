@@ -25,12 +25,13 @@
 extern crate cmsis_dsp_sys_pregenerated as cmsis_dsp_sys;
 
 pub mod basic;
-pub mod transform;
 pub mod complex;
+pub mod filter;
 #[cfg(feature = "libm")]
 mod libm_c;
 #[cfg(all(feature = "micromath", not(feature = "libm")))]
 mod micromath_c;
+pub mod transform;
 
 use core::convert::TryInto;
 use core::fmt::Debug;
@@ -72,15 +73,13 @@ impl StatusCode for cmsis_dsp_sys::arm_status::Type {
 /// Result type alias
 pub type Result<T> = ::core::result::Result<T, Error>;
 
-
-
 /// Checks that all elements of the provided lengths value/tuple are equal, and that the length
 /// value fits into the returned integer type. This function panics if any condition does not hold.
 fn check_length<L, N>(lengths: L) -> N
-    where
-        L: Lengths,
-        usize: TryInto<N>,
-        <usize as TryInto<N>>::Error: Debug,
+where
+    L: Lengths,
+    usize: TryInto<N>,
+    <usize as TryInto<N>>::Error: Debug,
 {
     lengths.assert_lengths_equal();
     lengths
