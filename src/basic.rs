@@ -550,3 +550,24 @@ pub fn shift_in_place_q7(values: &mut [I1F7], shift_bits: i8) {
         cmsis_dsp_sys::arm_shift_q7(ptr as *const _, shift_bits, ptr as *mut _, length);
     }
 }
+
+/// Scale the elements of a Q15 vector a specified number
+///
+/// This is functionally equivalent to performing `dst[i] = (src[i] * scaleFract) << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn scale_q15(src: &[I1F15], scale_fract: I1F15, shift: i8, dst: &mut [I1F15]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_scale_q15(
+            src.as_ptr() as *const _,
+            scale_fract.to_bits(),
+            shift,
+            dst.as_mut_ptr() as *mut _,
+            length,
+        );
+    }
+}
